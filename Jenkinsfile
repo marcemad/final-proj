@@ -1,7 +1,7 @@
 pipeline {
     agent any
     stages {
-        stage('Build') { 
+        stage('listing files') { 
             steps { 
                 sh 'ls -a' 
             }
@@ -41,7 +41,7 @@ pipeline {
               }
         }
 
-        stage('build') {
+        stage('any final test') {
             steps {
                 sh 'python --version'
             }

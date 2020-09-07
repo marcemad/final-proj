@@ -4,8 +4,8 @@ pipeline {
 	stage('Lint Dockerfile') {
 	    steps {
                 sh 'hadolint Dockerfile'
+            }
         }
-    }
         stage('build') {
             steps {
                 sh 'python --version'

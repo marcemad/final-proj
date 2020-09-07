@@ -9,7 +9,7 @@ pipeline {
 
 	stage('Lint Dockerfile') {
 	    steps {
-                sh 'hadolint Dockerfile'
+                sh 'hadolint Dockerfile --ignore DL4000'
             }
         }
         stage('build') {

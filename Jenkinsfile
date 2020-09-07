@@ -15,14 +15,14 @@ pipeline {
 
          stage('Build Docker Image') {
               steps {
-                  sh 'docker build -t capstoneMarc .'
+                  sh 'docker build -t capstone-marc .'
               }
          }
          stage('Push Docker Image') {
               steps {
                   withDockerRegistry([url: "", credentialsId: "dockerhub"]) {
-                      sh "docker tag capstoneMarc marcemad/capstoneMarc"
-                      sh 'docker push marcemad/capstoneMarc'
+                      sh "docker tag capstone-marc marcemad/capstone-marc"
+                      sh 'docker push marcemad/capstone-marc'
                   }
               }
          }

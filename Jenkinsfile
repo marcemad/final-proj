@@ -26,6 +26,21 @@ pipeline {
                   }
               }
          }
+         stage('Deploying') {
+              steps{
+                  echo 'Deploying to AWS...'
+                  withAWS(credentials: 'aws-static', region: 'us-east-2') {
+                      sh "aws eks --region us-east-2 update-kubeconfig --name my-cluster"
+                      sh "kubectl config use-context arn:aws:eks:us-east-2:252521120624:cluster/my-cluster"
+                      sh "kubectl apply -f deployment.yml"
+                      sh "kubectl get nodes"
+                      sh "kubectl get deployment"
+                      sh "kubectl get pod -o wide"
+                      sh "kubectl get service/capstonefola"
+                  }
+              }
+        }
+
         stage('build') {
             steps {
                 sh 'python --version'
